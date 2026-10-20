@@ -5,7 +5,7 @@ import { gsap, ScrollTrigger } from '../lib/gsap'
 // Lenis smooth scroll driven by GSAP's ticker so ScrollTrigger and Lenis share one frame loop.
 export function SmoothScroll({ children }: { children: ReactNode }) {
   return (
-    <ReactLenis root options={{ autoRaf: false, lerp: 0.1 }}>
+    <ReactLenis root options={{ autoRaf: false, lerp: 0.1, anchors: true }}>
       <GsapSync />
       {children}
     </ReactLenis>

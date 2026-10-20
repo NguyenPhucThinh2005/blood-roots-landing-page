@@ -1,7 +1,6 @@
-import '@fontsource/be-vietnam-pro/300.css'
-import '@fontsource/be-vietnam-pro/400.css'
-import '@fontsource/be-vietnam-pro/600.css'
-import '@fontsource/be-vietnam-pro/800.css'
+import '@fontsource-variable/libre-franklin/wght.css'
+import '@fontsource-variable/source-serif-4/opsz.css'
+import '@fontsource-variable/source-serif-4/opsz-italic.css'
 import './index.css'
 
 import { Analytics } from '@vercel/analytics/react'

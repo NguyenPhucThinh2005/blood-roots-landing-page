@@ -1,21 +1,48 @@
 @import 'tailwindcss';
 @import 'lenis/dist/lenis.css';
 
-/* Design tokens — palette sampled from the "BÌA GAME" banner and "COMING SOON" poster. */
+/* Design tokens — direction "page-is-the-object" (docs/art-direction.md). Brand palette kept:
+   ground void, paper bone, accent blood. Folder tones are tints of those three inks. */
 @theme {
-  --color-blood-50: #fdeaea;
+  --color-void: #070505;
+  --color-ash: #151010;
+  --color-soot: #2a201e;
+  --color-bone: #f2ece4;
+  --color-bone-dim: #d9d0c3;
   --color-blood-300: #f07070;
   --color-blood-500: #d61f1f;
   --color-blood-700: #9b0c0c;
-  --color-blood-900: #4a0505;
-  --color-void: #070505;
-  --color-ash: #1a1414;
-  --color-bone: #f2ece4;
+  --color-blood-900: #3a0606;
 
-  --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Libre Franklin Variable', 'Arial Narrow', sans-serif;
+  --font-serif: 'Source Serif 4 Variable', Georgia, serif;
 
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --text-step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --text-step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --text-step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --text-step-figure: clamp(3.5rem, 2rem + 6vw, 7rem);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+:root {
+  --margin: clamp(20px, 3vw, 40px);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --folder-step: 52px;
+  /* Width of the open front folder; the premise section continues it at the same width. */
+  --folder-w: 100%;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --folder-step: 64px;
+    --folder-w: 86%;
+  }
 }
 
 @layer base {
@@ -24,10 +51,96 @@
   }
 
   body {
-    @apply bg-void font-sans text-bone antialiased;
+    @apply bg-void font-serif text-step-body text-bone antialiased;
+    line-height: 1.55;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-bold;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blood-500);
+    outline-offset: 3px;
   }
 
   ::selection {
-    @apply bg-blood-500 text-bone;
+    @apply bg-blood-700 text-bone;
   }
+}
+
+@layer components {
+  .page-x {
+    padding-inline: var(--margin);
+  }
+
+  /* The one button shape on the page: square, flat, filled; folder-tab top corners. */
+  .btn {
+    @apply inline-flex items-center justify-center bg-blood-700 px-6 py-3.5 font-display text-step-body font-bold text-bone;
+    clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%, 0 10px);
+    transition:
+      background-color var(--t-hover) ease,
+      transform var(--t-press) var(--ease-out);
+  }
+  .btn:hover {
+    @apply bg-blood-500;
+  }
+  .btn:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  .link {
+    @apply underline decoration-1 underline-offset-4;
+    transition: color var(--t-hover) ease;
+  }
+  .link:hover {
+    @apply text-blood-300;
+  }
+
+  /* Folder tab: trapezoid cut with clip-path (hero, section grounds). */
+  .tab-shape {
+    clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 100%, 0 100%);
+  }
+
+  /* Bottom edge cut into small scallops (letter sheet). */
+  .scallop-bottom {
+    --s: 14px;
+    mask:
+      radial-gradient(var(--s) at 50% 100%, #0000 98%, #000) 50% / calc(2 * var(--s)) 100% repeat-x,
+      linear-gradient(#000 0 0) top / 100% calc(100% - var(--s)) no-repeat;
+    mask-composite: add;
+  }
+
+  /* Top edge cut into semicircular scallops (postcard footer). */
+  .scallop-top {
+    --s: clamp(22px, 4vw, 50px);
+    mask:
+      radial-gradient(var(--s) at 50% 0, #0000 98%, #000) 50% calc(var(--s) * -0) / calc(2 * var(--s)) 100% repeat-x;
+  }
+
+  /* Row of round perforation dots (tear-off line). */
+  .perforation {
+    height: 5px;
+    background: radial-gradient(circle, currentColor 2.5px, transparent 3px) 0 0 / 14px 5px repeat-x;
+  }
+
+  .sr-only-focusable:not(:focus) {
+    @apply sr-only;
+  }
+}
+
+/* Static film grain over the whole page; no animation (loops are not worth their cost here). */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
