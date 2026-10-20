@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+/* Design tokens — palette sampled from the "BÌA GAME" banner and "COMING SOON" poster. */
+@theme {
+  --color-blood-50: #fdeaea;
+  --color-blood-300: #f07070;
+  --color-blood-500: #d61f1f;
+  --color-blood-700: #9b0c0c;
+  --color-blood-900: #4a0505;
+  --color-void: #070505;
+  --color-ash: #1a1414;
+  --color-bone: #f2ece4;
+
+  --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-void font-sans text-bone antialiased;
+  }
+
+  ::selection {
+    @apply bg-blood-500 text-bone;
+  }
+}
