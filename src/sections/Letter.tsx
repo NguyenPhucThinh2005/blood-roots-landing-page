@@ -24,7 +24,7 @@ export function Letter() {
                 <p key={p.slice(0, 24)}>{p}</p>
               ))}
             </div>
-            <p className="mt-10 font-serif text-[22px] italic">{t.letter.signature}</p>
+            <p className="mt-10 font-serif text-step-lead italic">{t.letter.signature}</p>
             <p className="text-step-small text-void/70">{t.letter.role}</p>
           </div>
 

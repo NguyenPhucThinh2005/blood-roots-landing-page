@@ -39,7 +39,7 @@ export function SoundToggle() {
           />
         ))}
       </span>
-      {sound.enabled ? t.ui.soundOff : t.ui.soundOn}
+      <span className="sr-only md:not-sr-only">{sound.enabled ? t.ui.soundOff : t.ui.soundOn}</span>
     </button>
   )
 }

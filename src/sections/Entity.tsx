@@ -82,10 +82,10 @@ export function Entity() {
       </svg>
 
       <div className="relative">
-        <h2 id="entity-title" data-reveal className="text-[15vw] md:text-[clamp(64px,8.4vw,150px)]">
+        <h2 id="entity-title" data-reveal className="text-step-display">
           {t.entity.title}
         </h2>
-        <p data-reveal className="mt-6 max-w-[32ch] text-[22px] leading-[1.35] md:mt-8 md:text-[32px]">
+        <p data-reveal className="mt-6 max-w-[54ch] text-step-lead leading-[1.4] md:mt-8">
           {t.entity.statement}
         </p>
 
@@ -99,7 +99,7 @@ export function Entity() {
                   onFocus={(e) => show(i, e.currentTarget)}
                   onBlur={() => setActive(null)}
                   className={cn(
-                    'flex flex-wrap items-baseline justify-between gap-x-6 py-3 outline-none transition-opacity duration-200 focus-visible:underline md:py-4',
+                    'flex flex-wrap items-baseline justify-between gap-x-6 py-3 transition-opacity duration-200 outline-none focus-visible:underline md:py-4',
                     active !== null && active !== i && 'md:opacity-40',
                   )}
                 >
@@ -109,7 +109,7 @@ export function Entity() {
                     loading="lazy"
                     className="mb-3 aspect-[4/3] w-full object-cover md:hidden"
                   />
-                  <span className="font-display text-[34px] leading-none font-bold tracking-[-0.035em] md:text-step-head">
+                  <span className="font-display text-step-head leading-none font-bold tracking-[-0.035em]">
                     {r.name}
                   </span>
                   <span className="text-step-body text-bone/85">{r.detail}</span>

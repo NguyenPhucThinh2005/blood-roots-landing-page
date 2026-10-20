@@ -24,7 +24,18 @@ gsap.registerPlugin(
 
 gsap.defaults({ ease: 'expo.out', duration: 1 })
 
-export { CustomEase, CustomWiggle, Draggable, DrawSVGPlugin, Flip, gsap, Observer, ScrollTrigger, SplitText, useGSAP }
+export {
+  CustomEase,
+  CustomWiggle,
+  Draggable,
+  DrawSVGPlugin,
+  Flip,
+  gsap,
+  Observer,
+  ScrollTrigger,
+  SplitText,
+  useGSAP,
+}
 
 // Handy in DevTools while building; stripped from production builds.
 if (import.meta.env.DEV) Object.assign(window, { gsap, ScrollTrigger })

@@ -125,7 +125,12 @@ export function Puzzle() {
   }
 
   return (
-    <section ref={root} id="puzzle" aria-labelledby="puzzle-title" className="page-x bg-soot pb-24 md:pb-[180px]">
+    <section
+      ref={root}
+      id="puzzle"
+      aria-labelledby="puzzle-title"
+      className="page-x bg-soot pb-24 md:pb-[180px]"
+    >
       <div className="grid gap-10 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-4 md:pt-4">
           <h2 id="puzzle-title" data-reveal className="text-step-head">

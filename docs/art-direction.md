@@ -56,3 +56,17 @@ Thay đổi so với nền móng: **Be Vietnam Pro được thay bằng cặp fo
 - Model tổng ≤ 8MB, mỗi video ≤ 4MB.
 - Không quá 3 lần nháy/giây.
 - Reduced motion: giữ nguyên nội dung, 3D thay bằng ảnh.
+
+## Khác với kế hoạch ban đầu (theo house rules của taste-skill)
+- **Không có cổng vào và preloader.** Màn hình đầu là HTML hiện ngay; canvas 3D tải sau. Âm thanh là nút cố định ở góc dưới bên phải, mặc định tắt (trên điện thoại chỉ hiện biểu tượng).
+- **Không có custom cursor.** Đèn pin chỉ là hiệu ứng ánh sáng trong section bức tường; con trỏ hệ thống vẫn giữ nguyên.
+- **Cỡ chữ gom về 6 bậc** (`--text-step-small/body/lead/title/head/display`).
+- **Điện thoại:** bức tường chỉ dựng 2 mẩu báo (1990 và 2024) vừa trong lề, không cuộn ngang.
+- **Màu giấy** đổi từ `#f2ece4` sang `#e9e8e4` (ít ngả vàng hơn, theo cảnh báo palette-cream).
+
+## Kết quả gate (2026-10-20)
+`lint.mjs src`: 0 FAIL. `inspect.mjs` ở 1440/768/390: **0 FAIL, 5 WARN**, đều có lý do:
+- `small-title` / `hero-words`: h1 là logo dạng ảnh (có alt "Blood Root"), inspector không đọc được chữ trong ảnh nên lấy câu mô tả làm tiêu đề.
+- `side-scroll`: hàng khoảnh khắc Chương 1 là carousel theo blueprint, có nút trước/sau và thanh tiến trình.
+- `blank-gap`: vùng đó là tấm 3D kệ tạp hóa (canvas), inspector không đọc được nội dung canvas.
+- `empty-middle` (768px): hàng tiêu đề carousel, tiêu đề bên trái và nút bên phải.

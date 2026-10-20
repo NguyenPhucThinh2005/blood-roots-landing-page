@@ -78,7 +78,7 @@ export function Chapter() {
   return (
     <section ref={root} id="chapter" aria-labelledby="chapter-title" className="bg-soot py-24 md:py-[160px]">
       <div className="page-x flex items-end justify-between gap-6">
-        <h2 id="chapter-title" data-reveal className="text-[clamp(28px,3vw,40px)] tracking-[-0.03em]">
+        <h2 id="chapter-title" data-reveal className="text-step-title">
           {t.chapter.title}
         </h2>
         <div className="hidden gap-2 md:flex">
@@ -109,18 +109,16 @@ export function Chapter() {
 
       <ol
         ref={row}
-        className="mt-10 flex snap-x snap-mandatory scroll-px-(--margin) gap-4 overflow-x-auto px-(--margin) pb-4 [scrollbar-width:none] md:cursor-grab md:gap-8 md:active:cursor-grabbing"
+        className="mt-10 flex snap-x snap-mandatory scroll-px-(--margin) [scrollbar-width:none] gap-4 overflow-x-auto px-(--margin) pb-4 md:cursor-grab md:gap-8 md:active:cursor-grabbing"
       >
         {t.chapter.moments.map((m, i) => {
           const media = MEDIA[i]
           return (
-            <li
-              key={m.name}
-              data-reveal
-              className="flex w-[72vw] shrink-0 snap-start flex-col md:w-[280px]"
-            >
-              <h3 className="font-display text-[18px] leading-tight font-bold tracking-[-0.01em]">{m.name}</h3>
-              <p className="mt-2 text-[15px] leading-[1.45] text-bone/80">{m.text}</p>
+            <li key={m.name} data-reveal className="flex w-[72vw] shrink-0 snap-start flex-col md:w-[280px]">
+              <h3 className="font-display text-step-body leading-tight font-bold tracking-[-0.01em]">
+                {m.name}
+              </h3>
+              <p className="mt-2 text-step-small leading-[1.5] text-bone/80">{m.text}</p>
               <div className={cn('shrink-0', GAPS_PHONE[i], GAPS[i])} />
               <div className="mt-auto aspect-[4/5] w-full overflow-hidden bg-void">
                 {'img' in media ? (

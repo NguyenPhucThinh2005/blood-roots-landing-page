@@ -21,9 +21,14 @@ export function Making() {
   useReveal(root)
 
   return (
-    <section ref={root} id="making" aria-labelledby="making-title" className="page-x bg-void py-24 md:py-[180px]">
+    <section
+      ref={root}
+      id="making"
+      aria-labelledby="making-title"
+      className="page-x bg-void py-24 md:py-[180px]"
+    >
       <div className="md:grid md:grid-cols-12 md:gap-8">
-        <h2 id="making-title" data-reveal className="text-[clamp(28px,3vw,40px)] tracking-[-0.03em] md:col-span-5">
+        <h2 id="making-title" data-reveal className="text-step-title md:col-span-5">
           {t.making.title}
         </h2>
         <p data-reveal className="mt-4 max-w-[52ch] md:col-span-6 md:col-start-7 md:mt-0">
@@ -49,9 +54,14 @@ export function Making() {
                 className="aspect-[4/5] w-full object-cover"
               />
             )}
-            <div className={cn('flex min-h-[84px] flex-col justify-between gap-1 p-3 text-[13px] leading-snug', STRIPS[i % 4])}>
+            <div
+              className={cn(
+                'flex min-h-[84px] flex-col justify-between gap-1 p-3 text-step-small leading-snug',
+                STRIPS[i % 4],
+              )}
+            >
               <div className="flex justify-between gap-2 font-display font-bold">
-                <span className="text-[14px]">{tile.name}</span>
+                <span>{tile.name}</span>
                 <span className="tabular-nums">{tile.tool}</span>
               </div>
               <div className="flex flex-wrap justify-between gap-x-2">

@@ -16,7 +16,12 @@ function Plate({ className, label, children }: { className?: string; label: stri
 }
 
 /** Camera that drifts a little toward the pointer. `still` (reduced motion) keeps it fixed. */
-function DriftCamera({ position, target, still, fov = 32 }: {
+function DriftCamera({
+  position,
+  target,
+  still,
+  fov = 32,
+}: {
   position: [number, number, number]
   target: [number, number, number]
   still?: boolean
@@ -36,7 +41,13 @@ function DriftCamera({ position, target, still, fov = 32 }: {
 }
 
 /** A flame: warm point light whose intensity wavers like a wick (static when `still`). */
-function Flame({ position, color, intensity, still, seed = 0 }: {
+function Flame({
+  position,
+  color,
+  intensity,
+  still,
+  seed = 0,
+}: {
   position: [number, number, number]
   color: string
   intensity: number
@@ -51,7 +62,17 @@ function Flame({ position, color, intensity, still, seed = 0 }: {
     const n = Math.sin(t * 2.1) * 0.5 + Math.sin(t * 3.7 + 1.3) * 0.3 + Math.sin(t * 1.3 + 2.1) * 0.2
     light.current.intensity = intensity * (0.86 + n * 0.12)
   })
-  return <pointLight ref={light} position={position} color={color} intensity={intensity} distance={4} decay={2} castShadow />
+  return (
+    <pointLight
+      ref={light}
+      position={position}
+      color={color}
+      intensity={intensity}
+      distance={4}
+      decay={2}
+      castShadow
+    />
+  )
 }
 
 function DimRoom() {
@@ -68,7 +89,7 @@ export function ShelfPlate({ className, still, label }: PlateProps) {
   return (
     <Plate className={className} label={label}>
       <color attach="background" args={['#120d0c']} />
-      <DriftCamera position={[0, 0.62, 2.35]} target={[0, 0.4, 0]} still={still} />
+      <DriftCamera position={[0.02, 0.46, 1.9]} target={[0.02, 0.24, 0]} still={still} />
       <DimRoom />
       <ambientLight intensity={0.25} />
       <Flame position={[0.3, 1.5, 1]} color="#ffc98a" intensity={9} still={still} />
@@ -84,11 +105,11 @@ export function ShelfPlate({ className, still, label }: PlateProps) {
         <meshStandardMaterial color="#2c3d3f" roughness={1} />
       </mesh>
 
-      <Prop name="NuocMam" height={0.5} position={[-0.78, 0, 0.02]} rotation={[0, 0.3, 0]} />
-      <Prop name="TuongOt" height={0.42} position={[-0.32, 0, 0.1]} rotation={[0, -0.2, 0]} />
-      <Prop name="Muoi" height={0.26} position={[0.12, 0, 0.14]} />
-      <Prop name="chennuoc" height={0.12} position={[0.48, 0, 0.2]} />
-      <Prop name="BanhMi" height={0.2} position={[0.86, 0, 0.04]} rotation={[0, -0.6, 0]} />
+      <Prop name="NuocMam" height={0.5} position={[-0.62, 0, 0.02]} rotation={[0, 0.3, 0]} />
+      <Prop name="TuongOt" height={0.42} position={[-0.24, 0, 0.12]} rotation={[0, -0.2, 0]} />
+      <Prop name="Muoi" height={0.24} position={[0.12, 0, 0.16]} />
+      <Prop name="chennuoc" height={0.1} position={[0.4, 0, 0.22]} />
+      <Prop name="BanhMi" height={0.18} position={[0.6, 0, 0.12]} rotation={[0, -1.25, 0]} />
     </Plate>
   )
 }

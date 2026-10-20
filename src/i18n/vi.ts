@@ -38,7 +38,8 @@ export const vi = {
     ],
     shelfCaption:
       'Kệ hàng của tiệm: hũ nước mắm, chai tương ớt, hũ muối, ổ bánh mì. Mỗi món đều do nhóm dựng bằng Blender, hiển thị trực tiếp bằng 3D.',
-    shelfAlt: 'Kệ tiệm tạp hóa với hũ nước mắm, chai tương ớt, hũ muối và ổ bánh mì do nhóm dựng bằng Blender',
+    shelfAlt:
+      'Kệ tiệm tạp hóa với hũ nước mắm, chai tương ớt, hũ muối và ổ bánh mì do nhóm dựng bằng Blender',
   },
   letter: {
     title: 'Thư ba để lại',
@@ -159,11 +160,35 @@ export const vi = {
     altarAlt: 'Bàn thờ dựng bằng 3D: ảnh thờ, đèn thờ, lư hương và bình hoa cúc trên tủ thờ',
     tiles: [
       { img: 'altar', name: 'Bàn thờ', where: 'Căn nhà', tool: 'Unity', note: 'Ảnh thờ, đèn thờ, lư hương' },
-      { img: 'house', name: 'Phòng khách', where: 'Căn nhà', tool: 'Unity', note: 'Nền gạch bông, tường xanh' },
+      {
+        img: 'house',
+        name: 'Phòng khách',
+        where: 'Căn nhà',
+        tool: 'Unity',
+        note: 'Nền gạch bông, tường xanh',
+      },
       { img: 'bedroom', name: 'Phòng ngủ', where: 'Căn nhà', tool: 'Unity', note: 'Ga giường hoa, tủ gỗ' },
-      { img: 'school', name: 'Hành lang ban ngày', where: 'Ngôi trường', tool: 'Unity', note: 'Trước khi đèn tắt' },
-      { img: 'classroom', name: 'Lớp học', where: 'Ngôi trường', tool: 'Blender', note: 'Bàn ghế gỗ, bảng xanh' },
-      { img: 'corridorDay', name: 'Hành lang', where: 'Ngôi trường', tool: 'Blender', note: 'Giống tầng hầm FPT' },
+      {
+        img: 'school',
+        name: 'Hành lang ban ngày',
+        where: 'Ngôi trường',
+        tool: 'Unity',
+        note: 'Trước khi đèn tắt',
+      },
+      {
+        img: 'classroom',
+        name: 'Lớp học',
+        where: 'Ngôi trường',
+        tool: 'Blender',
+        note: 'Bàn ghế gỗ, bảng xanh',
+      },
+      {
+        img: 'corridorDay',
+        name: 'Hành lang',
+        where: 'Ngôi trường',
+        tool: 'Blender',
+        note: 'Giống tầng hầm FPT',
+      },
       { img: 'stairs', name: 'Cầu thang', where: 'Ngôi trường', tool: 'Blender', note: 'Lối lên tầng trên' },
       { img: 'corridorRed', name: 'Dị cảnh', where: 'Ác mộng', tool: 'Blender', note: 'Hành lang nhuốm đỏ' },
     ],

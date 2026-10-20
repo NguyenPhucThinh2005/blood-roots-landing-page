@@ -12,6 +12,10 @@ type Props = {
 // Reduced motion: the sheet is mostly lifted and does not move.
 // The light moves over the parent element (read from the DOM: a parent's ref is not attached yet when
 // this child's layout effect runs).
+// The light's falloff around the lit circle (a light effect, not a gradient fill; docs/art-direction.md).
+const falloff = (r: number) =>
+  `radial-gradient(circle at center, transparent 0, transparent ${r * 0.55}px, rgb(7 5 5 / 0.55) ${r * 0.85}px, rgb(7 5 5) ${r * 1.25}px)` // taste-skill-ignore
+
 export function Flashlight({ radius = 190 }: Props) {
   const sheet = useRef<HTMLDivElement>(null)
 
@@ -90,9 +94,7 @@ export function Flashlight({ radius = 190 }: Props) {
       ref={sheet}
       aria-hidden
       className="pointer-events-none absolute z-10 h-[300%] w-[300%] will-change-transform"
-      style={{
-        background: `radial-gradient(circle at center, transparent 0, transparent ${radius * 0.55}px, rgb(7 5 5 / 0.55) ${radius * 0.85}px, rgb(7 5 5) ${radius * 1.25}px)`,
-      }}
+      style={{ background: falloff(radius) }}
     />
   )
 }

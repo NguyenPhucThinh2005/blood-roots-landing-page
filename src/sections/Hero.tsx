@@ -50,8 +50,8 @@ export function Hero() {
 
       <div className="page-x grid grid-cols-3 items-center pt-5 font-display text-step-small font-bold md:pt-6">
         <span />
-        <span className="justify-self-center text-[15px] tracking-tight">{t.brand.studio}</span>
-        <LangToggle className="justify-self-end text-[15px]" />
+        <span className="justify-self-center tracking-tight">{t.brand.studio}</span>
+        <LangToggle className="justify-self-end" />
       </div>
 
       <div className="page-x flex flex-col items-center pt-[clamp(28px,6svh,72px)] text-center">
@@ -59,15 +59,14 @@ export function Hero() {
           <img
             data-hero-logo
             src={logos.bloodRoot}
-            alt=""
+            alt={t.brand.game}
             width={1400}
             height={450}
             fetchPriority="high"
             className="h-auto w-full"
           />
-          <span className="sr-only">{t.brand.game}</span>
         </h1>
-        <p data-hero-tagline className="mt-5 max-w-[46ch] text-[16px] text-bone/90 md:mt-6 md:text-[20px]">
+        <p data-hero-tagline className="mt-5 max-w-[46ch] text-step-lead leading-[1.4] text-bone/90 md:mt-6">
           {t.hero.tagline}
         </p>
       </div>
@@ -86,7 +85,7 @@ export function Hero() {
               <a
                 href={`#${f.id}`}
                 className={cn(
-                  'tab-shape absolute -top-8 flex h-8 items-center px-6 font-display text-[15px] font-bold transition-transform duration-300 ease-(--ease-out) hover:-translate-y-1.5 focus-visible:-translate-y-1.5 md:-top-10 md:h-10 md:px-8 md:text-[18px]',
+                  'tab-shape absolute -top-8 flex h-8 items-center px-6 font-display text-step-small font-bold transition-transform duration-300 ease-(--ease-out) hover:-translate-y-1.5 focus-visible:-translate-y-1.5 md:-top-10 md:h-10 md:px-8 md:text-step-body',
                   f.band,
                   f.ink,
                   f.tabX,

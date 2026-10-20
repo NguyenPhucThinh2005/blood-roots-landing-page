@@ -38,7 +38,8 @@ export const en: Dictionary = {
     ],
     shelfCaption:
       'The shop shelf: fish sauce, chilli sauce, salt and a loaf of bread. Every item was modelled by the team in Blender and is rendered live in 3D.',
-    shelfAlt: 'A grocery shelf with a jar of fish sauce, chilli sauce, salt and a loaf of bread, modelled by the team in Blender',
+    shelfAlt:
+      'A grocery shelf with a jar of fish sauce, chilli sauce, salt and a loaf of bread, modelled by the team in Blender',
   },
   letter: {
     title: 'A letter from Father',
@@ -156,16 +157,59 @@ export const en: Dictionary = {
     title: 'Built from real things',
     intro:
       'A jar of fish sauce, a loaf of bread, the incense burner on the altar: we modelled each one in Blender so the house feels like a real Vietnamese home.',
-    altarAlt: 'A 3D family altar: a funeral portrait, altar lamp, incense burner and chrysanthemums on an altar cabinet',
+    altarAlt:
+      'A 3D family altar: a funeral portrait, altar lamp, incense burner and chrysanthemums on an altar cabinet',
     tiles: [
-      { img: 'altar', name: 'The altar', where: 'The house', tool: 'Unity', note: 'Portrait, lamp, incense burner' },
-      { img: 'house', name: 'Living room', where: 'The house', tool: 'Unity', note: 'Patterned tiles, blue walls' },
-      { img: 'bedroom', name: 'Bedroom', where: 'The house', tool: 'Unity', note: 'Floral sheets, wooden wardrobe' },
-      { img: 'school', name: 'Corridor by day', where: 'The school', tool: 'Unity', note: 'Before the lights go out' },
-      { img: 'classroom', name: 'Classroom', where: 'The school', tool: 'Blender', note: 'Wooden desks, green board' },
-      { img: 'corridorDay', name: 'Corridor', where: 'The school', tool: 'Blender', note: 'Like the FPT basement' },
+      {
+        img: 'altar',
+        name: 'The altar',
+        where: 'The house',
+        tool: 'Unity',
+        note: 'Portrait, lamp, incense burner',
+      },
+      {
+        img: 'house',
+        name: 'Living room',
+        where: 'The house',
+        tool: 'Unity',
+        note: 'Patterned tiles, blue walls',
+      },
+      {
+        img: 'bedroom',
+        name: 'Bedroom',
+        where: 'The house',
+        tool: 'Unity',
+        note: 'Floral sheets, wooden wardrobe',
+      },
+      {
+        img: 'school',
+        name: 'Corridor by day',
+        where: 'The school',
+        tool: 'Unity',
+        note: 'Before the lights go out',
+      },
+      {
+        img: 'classroom',
+        name: 'Classroom',
+        where: 'The school',
+        tool: 'Blender',
+        note: 'Wooden desks, green board',
+      },
+      {
+        img: 'corridorDay',
+        name: 'Corridor',
+        where: 'The school',
+        tool: 'Blender',
+        note: 'Like the FPT basement',
+      },
       { img: 'stairs', name: 'Stairwell', where: 'The school', tool: 'Blender', note: 'The way upstairs' },
-      { img: 'corridorRed', name: 'Nightmare', where: 'The other side', tool: 'Blender', note: 'A corridor stained red' },
+      {
+        img: 'corridorRed',
+        name: 'Nightmare',
+        where: 'The other side',
+        tool: 'Blender',
+        note: 'A corridor stained red',
+      },
     ],
   },
   stats: {

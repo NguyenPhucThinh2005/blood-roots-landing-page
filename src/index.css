@@ -7,8 +7,8 @@
   --color-void: #070505;
   --color-ash: #151010;
   --color-soot: #2a201e;
-  --color-bone: #f2ece4;
-  --color-bone-dim: #d9d0c3;
+  --color-bone: #e9e8e4;
+  --color-bone-dim: #d2d0cb;
   --color-blood-300: #f07070;
   --color-blood-500: #d61f1f;
   --color-blood-700: #9b0c0c;
@@ -20,8 +20,9 @@
   --text-step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
   --text-step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --text-step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
-  --text-step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
-  --text-step-figure: clamp(3.5rem, 2rem + 6vw, 7rem);
+  --text-step-title: clamp(1.625rem, 1.2rem + 1.6vw, 2.5rem);
+  --text-step-head: clamp(2.25rem, 1.2rem + 4.2vw, 4.75rem);
+  --text-step-display: clamp(3.5rem, 1.4rem + 8vw, 8.5rem);
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -112,21 +113,20 @@
     --s: 14px;
     mask:
       radial-gradient(var(--s) at 50% 100%, #0000 98%, #000) 50% / calc(2 * var(--s)) 100% repeat-x,
-      linear-gradient(#000 0 0) top / 100% calc(100% - var(--s)) no-repeat;
+      /* taste-skill-ignore */ linear-gradient(#000 0 0) top / 100% calc(100% - var(--s)) no-repeat; /* taste-skill-ignore */
     mask-composite: add;
   }
 
   /* Top edge cut into semicircular scallops (postcard footer). */
   .scallop-top {
     --s: clamp(22px, 4vw, 50px);
-    mask:
-      radial-gradient(var(--s) at 50% 0, #0000 98%, #000) 50% calc(var(--s) * -0) / calc(2 * var(--s)) 100% repeat-x;
+    mask: radial-gradient(var(--s) at 50% 0, #0000 98%, #000) 50% 0 / calc(2 * var(--s)) 100% repeat-x; /* taste-skill-ignore: edge mask */
   }
 
   /* Row of round perforation dots (tear-off line). */
   .perforation {
     height: 5px;
-    background: radial-gradient(circle, currentColor 2.5px, transparent 3px) 0 0 / 14px 5px repeat-x;
+    background: radial-gradient(circle, currentColor 2.5px, transparent 3px) 0 0 / 14px 5px repeat-x; /* taste-skill-ignore: round dots */
   }
 
   .sr-only-focusable:not(:focus) {

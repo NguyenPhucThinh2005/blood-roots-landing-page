@@ -13,11 +13,7 @@ export function Premise() {
     <section ref={root} id="premise" aria-labelledby="premise-title" className="bg-void">
       <div className="mx-auto w-(--folder-w) bg-bone px-6 pt-16 pb-16 text-void md:px-8 md:pt-[140px] md:pb-[120px]">
         <div className="grid gap-6 md:grid-cols-12 md:items-end">
-          <h2
-            id="premise-title"
-            data-reveal
-            className="text-[11vw] md:col-span-7 md:text-[clamp(44px,5vw,76px)]"
-          >
+          <h2 id="premise-title" data-reveal className="text-step-head md:col-span-7">
             {t.premise.title}
           </h2>
           <p data-reveal className="max-w-[46ch] text-step-body md:col-span-4 md:col-start-9">
@@ -29,7 +25,7 @@ export function Premise() {
           {t.premise.facts.map((f) => (
             <div key={f.value} data-reveal className="flex flex-col-reverse">
               <dt className="mt-1.5 text-step-small text-void/70">{f.label}</dt>
-              <dd className="font-display text-[26px] leading-none font-bold tracking-[-0.03em] md:text-[clamp(28px,3vw,44px)]">
+              <dd className="font-display text-step-title leading-none font-bold tracking-[-0.03em]">
                 {f.value}
               </dd>
             </div>
