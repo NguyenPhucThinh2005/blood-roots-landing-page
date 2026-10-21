@@ -1,3 +1,4 @@
+import { useLenis } from 'lenis/react'
 import { Component, Suspense, useEffect, useState, type ReactNode } from 'react'
 import { useSectionAmbience } from './audio/useSectionAmbience'
 import { SoundToggle } from './components/Controls'
@@ -34,7 +35,17 @@ class Quiet extends Component<{ children: ReactNode }, { failed: boolean }> {
 export default function App() {
   const [webgl] = useState(hasWebGL)
   const { lang } = useLanguage()
+  const lenis = useLenis()
   useSectionAmbience()
+
+  // A shared link with #section opens at that section once the layout has settled.
+  useEffect(() => {
+    if (!lenis || !location.hash) return
+    const id = decodeURIComponent(location.hash.slice(1))
+    document.fonts.ready.then(() => {
+      if (document.getElementById(id)) lenis.scrollTo(`#${id}`, { immediate: true })
+    })
+  }, [lenis])
 
   // Fonts and the two languages change line breaks and section heights; re-measure scroll triggers.
   useEffect(() => {

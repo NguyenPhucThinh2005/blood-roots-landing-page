@@ -1,0 +1,23 @@
+# Checks every day that the public landing page still answers (lecturer requirement: the link must
+# stay alive until grading). A failed run emails the repository owner.
+name: uptime
+
+on:
+  schedule:
+    - cron: '0 1 * * *' # 08:00 in Vietnam
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        url:
+          - https://bloodroot.phucthinh2005.id.vn
+          - https://bloodroot.vercel.app
+    steps:
+      - name: Page and share image respond
+        run: |
+          curl -fsSL --retry 3 --retry-delay 10 "${{ matrix.url }}/" | grep -q "Blood Root"
+          curl -fsSI --retry 3 --retry-delay 10 "${{ matrix.url }}/og.jpg" > /dev/null
