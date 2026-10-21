@@ -10,7 +10,7 @@ type Status = 'idle' | 'invalid' | 'sending' | 'success' | 'error' | 'not-ready'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
-// The address side of the postcard: two lines to write on, then the page's one action.
+// The address side of the postcard: lines to write on, two optional choices, then the page's one action.
 // Posts to the team's Google Form (src/data/signup.ts); the response is opaque, so a request that
 // leaves without a network error counts as sent.
 export function SignupForm({ className }: { className?: string }) {
@@ -38,6 +38,9 @@ export function SignupForm({ className }: { className?: string }) {
     try {
       const body = new URLSearchParams({ [signupForm.fields.email]: email })
       if (name) body.set(signupForm.fields.name, name)
+      const source = data.get('source')
+      if (source) body.set(signupForm.fields.source, String(source))
+      for (const g of data.getAll('genres')) body.append(signupForm.fields.genres, String(g))
       await fetch(signupForm.action, { method: 'POST', mode: 'no-cors', body })
       form.reset()
       setStatus('success')
@@ -57,6 +60,12 @@ export function SignupForm({ className }: { className?: string }) {
 
   const field =
     'w-full border-0 border-b-2 border-void/55 bg-transparent px-0 pt-1 pb-2 font-serif text-step-lead text-void outline-none transition-colors duration-200 placeholder:text-void/40 focus:border-blood-700'
+
+  // Choices look like stamps on the card: the native input stays in the DOM for keyboard and
+  // screen readers; the face shows its state.
+  const chip = 'cursor-pointer'
+  const chipFace =
+    'block border-2 border-void/55 px-3 py-1.5 text-step-small font-bold transition-colors duration-200 hover:border-void peer-checked:border-blood-700 peer-checked:bg-blood-700 peer-checked:text-bone peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blood-500'
 
   return (
     <form noValidate onSubmit={submit} className={cn('flex flex-col', className)}>
@@ -81,6 +90,30 @@ export function SignupForm({ className }: { className?: string }) {
         {t.signup.name}
       </label>
       <input id={`${id}-name`} name="name" type="text" autoComplete="name" className={field} />
+
+      <fieldset className="mt-7">
+        <legend className="text-step-small text-void/75">{t.signup.source}</legend>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {signupForm.sources.map((value, i) => (
+            <label key={value} className={chip}>
+              <input type="radio" name="source" value={value} className="peer sr-only" />
+              <span className={chipFace}>{t.signup.sources[i]}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset className="mt-6">
+        <legend className="text-step-small text-void/75">{t.signup.genre}</legend>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {signupForm.genres.map((value, i) => (
+            <label key={value} className={chip}>
+              <input type="checkbox" name="genres" value={value} className="peer sr-only" />
+              <span className={chipFace}>{t.signup.genres[i]}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       {/* Honeypot, hidden from people and assistive tech. */}
       <input
