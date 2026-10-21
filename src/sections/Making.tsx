@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { btsImages, type BtsImage } from '../assets/media'
-import { Plate3D } from '../components/Plate3D'
 import { useReveal } from '../hooks/useReveal'
 import { useT } from '../i18n/LanguageProvider'
 import { cn } from '../lib/cn'
@@ -14,7 +13,6 @@ const STRIPS = [
 ]
 
 // "Photo tiles with label strips": every room and object as a print with its evidence tag.
-// The first tile is the altar itself, rendered live from the team's models.
 export function Making() {
   const t = useT()
   const root = useRef<HTMLElement>(null)
@@ -36,24 +34,15 @@ export function Making() {
         </p>
       </div>
 
-      <ul className="mt-10 grid grid-cols-2 gap-x-2 gap-y-5 md:mt-14 md:grid-cols-4 md:gap-x-3 md:gap-y-7">
+      <ul className="mt-10 grid grid-cols-2 gap-x-2 gap-y-5 md:mt-14 md:grid-cols-3 md:gap-x-3 md:gap-y-7">
         {t.making.tiles.map((tile, i) => (
           <li key={tile.img} data-reveal className="flex flex-col">
-            {tile.img === 'altar' ? (
-              <Plate3D
-                scene="altar"
-                label={t.making.altarAlt}
-                fallback={btsImages.altar}
-                className="aspect-[4/5] w-full"
-              />
-            ) : (
-              <img
-                src={btsImages[tile.img as BtsImage]}
-                alt={`${tile.name}, ${tile.where}`}
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover"
-              />
-            )}
+            <img
+              src={btsImages[tile.img as BtsImage]}
+              alt={`${tile.name}, ${tile.where}`}
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover"
+            />
             <div
               className={cn(
                 'flex min-h-[84px] flex-col justify-between gap-1 p-3 text-step-small leading-snug',

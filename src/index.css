@@ -34,6 +34,7 @@
   --t-press: 140ms;
   --t-hover: 180ms;
   --t-ui: 240ms;
+  --header-h: 56px;
   --folder-step: 52px;
   /* Width of the open front folder; the premise section continues it at the same width. */
   --folder-w: 100%;
@@ -41,6 +42,7 @@
 
 @media (width >= 48rem) {
   :root {
+    --header-h: 64px;
     --folder-step: 64px;
     --folder-w: 86%;
   }
@@ -49,6 +51,8 @@
 @layer base {
   html {
     color-scheme: dark;
+    /* Anchor jumps (native and Lenis) stop below the fixed header. */
+    scroll-padding-top: var(--header-h);
   }
 
   body {

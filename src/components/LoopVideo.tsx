@@ -1,18 +1,25 @@
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
-type Props = { src: string; poster: string; className?: string; label?: string }
+type Props = {
+  src: string
+  poster: string
+  className?: string
+  label?: string
+  /** In a stack of clips only the shown one plays; false keeps this one paused. */
+  active?: boolean
+}
 
 // Muted gameplay loop that only plays while on screen (and never under reduced motion,
 // where the poster frame stands in).
-export function LoopVideo({ src, poster, className, label }: Props) {
+export function LoopVideo({ src, poster, className, label, active = true }: Props) {
   const video = useRef<HTMLVideoElement>(null)
   const reduced = useReducedMotion()
 
   useEffect(() => {
     const v = video.current
     if (!v) return
-    if (reduced) {
+    if (reduced || !active) {
       v.pause()
       return
     }
@@ -25,7 +32,7 @@ export function LoopVideo({ src, poster, className, label }: Props) {
     )
     io.observe(v)
     return () => io.disconnect()
-  }, [reduced])
+  }, [reduced, active])
 
   return (
     <video

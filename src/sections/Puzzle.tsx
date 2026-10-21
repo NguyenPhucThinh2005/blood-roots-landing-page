@@ -37,6 +37,7 @@ export function Puzzle() {
   const [selected, setSelected] = useState<number | null>(null)
   const [focusSlot, setFocusSlot] = useState(0)
   const [moves, setMoves] = useState(0)
+  const [hint, setHint] = useState<{ slot: number; target: number } | null>(null)
   const solved = order.every((p, i) => p === i)
   useReveal(root)
 
@@ -53,6 +54,14 @@ export function Puzzle() {
     })
     setMoves((m) => m + 1)
     setSelected(null)
+    setHint(null)
+  }
+
+  // Like the game's hint: light the piece that belongs in the first wrong slot.
+  const showHint = () => {
+    const target = order.findIndex((p, i) => p !== i)
+    if (target < 0) return
+    setHint({ slot: order.indexOf(target), target })
   }
 
   const choose = (slot: number) => {
@@ -122,6 +131,7 @@ export function Puzzle() {
     setOrder(shuffle())
     setMoves(0)
     setSelected(null)
+    setHint(null)
   }
 
   return (
@@ -129,7 +139,7 @@ export function Puzzle() {
       ref={root}
       id="puzzle"
       aria-labelledby="puzzle-title"
-      className="page-x bg-soot pb-24 md:pb-[180px]"
+      className="page-x bg-[#3b2f2c] py-24 md:py-[160px]"
     >
       <div className="grid gap-10 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-4 md:pt-4">
@@ -151,9 +161,19 @@ export function Puzzle() {
               <Cta />
             </div>
           ) : (
-            <button type="button" onClick={reset} className="link mt-4 text-step-small">
-              {t.puzzle.reset}
-            </button>
+            <>
+              <div className="mt-4 flex gap-6">
+                <button type="button" onClick={showHint} className="link text-step-small">
+                  {t.puzzle.hint}
+                </button>
+                <button type="button" onClick={reset} className="link text-step-small">
+                  {t.puzzle.reset}
+                </button>
+              </div>
+              <p aria-live="polite" className="mt-3 max-w-[34ch] text-step-small text-blood-300">
+                {hint && t.puzzle.hintText(Math.floor(hint.target / N) + 1, (hint.target % N) + 1)}
+              </p>
+            </>
           )}
         </div>
 
@@ -186,6 +206,7 @@ export function Puzzle() {
                   className={cn(
                     'relative bg-void bg-no-repeat outline-offset-[-3px] transition-[filter] duration-200',
                     isSelected && 'outline-3 outline-blood-500 outline-solid',
+                    hint?.slot === slot && !isSelected && 'outline-3 outline-blood-300 outline-dashed',
                     !solved && 'cursor-grab hover:brightness-125 active:cursor-grabbing',
                   )}
                   style={{

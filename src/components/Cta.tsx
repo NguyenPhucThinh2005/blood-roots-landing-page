@@ -1,12 +1,11 @@
-import { FACEBOOK_URL } from '../assets/media'
 import { useT } from '../i18n/LanguageProvider'
 import { cn } from '../lib/cn'
 
-// The page's one primary action, named the same everywhere.
+// The page's one primary action, named the same everywhere: it leads to the sign-up postcard.
 export function Cta({ className }: { className?: string }) {
   const t = useT()
   return (
-    <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className={cn('btn', className)}>
+    <a href="#signup" className={cn('btn', className)}>
       {t.cta}
     </a>
   )

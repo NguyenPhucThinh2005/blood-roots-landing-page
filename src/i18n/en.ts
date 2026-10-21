@@ -3,38 +3,51 @@ import type { Dictionary } from './vi'
 export const en: Dictionary = {
   meta: {
     title: 'Blood Root — Hextrix Studio',
-    description: 'A first-person psychological horror game for PC, rooted in Vietnamese folk belief.',
+    description:
+      'A first-person psychological horror and puzzle game for PC, rooted in Vietnamese folk belief. Free demo.',
   },
   brand: {
     studio: 'Hextrix Studio',
     game: 'Blood Root',
   },
-  cta: 'Follow on Facebook',
+  cta: 'Sign up for the demo',
   ui: {
     soundOn: 'Turn sound on',
     soundOff: 'Turn sound off',
     switchLanguage: 'Tiếng Việt',
     switchLanguageLabel: 'Chuyển sang tiếng Việt',
     skip: 'Skip to content',
+    menu: 'Contents',
+    close: 'Close',
+  },
+  nav: {
+    label: 'Main sections',
+    premise: 'About',
+    why: 'Why',
+    features: 'Features',
+    puzzle: 'Try it',
+    team: 'Team',
   },
   hero: {
-    tagline: 'A first-person psychological horror game for PC, rooted in Vietnamese folk belief.',
+    tagline: 'A first-person psychological horror and puzzle game for PC, rooted in Vietnamese folk belief.',
+    altarAlt:
+      'The family altar in the game: portrait, altar lamp, incense burner and chrysanthemums, lit by a flashlight',
     tabs: {
-      premise: 'The call',
-      wall: 'The wall',
-      entity: 'Blood root',
-      chapter: 'Chapter 1',
-      making: 'Behind it',
+      premise: 'About',
+      why: 'Problem & answer',
+      features: 'Features',
+      puzzle: 'Try it',
+      team: 'Team',
     },
   },
   premise: {
     title: 'Father won’t wake up',
     note: 'A call at midnight: your father, a retired policeman, has fallen into a deep coma no doctor can explain. You come home, reopen the family grocery store, and find the case he never finished.',
     facts: [
-      { value: 'PC', label: 'Platform' },
-      { value: 'First person', label: 'Explore, solve, hide' },
-      { value: 'Chapter 1', label: 'The teacher, a school at night' },
-      { value: 'Coming soon', label: 'In development on Unity' },
+      { value: 'PC', label: 'Windows, first person' },
+      { value: '2–3 hours', label: 'for the full game' },
+      { value: 'Free', label: 'demo; full game planned at 50,000 VND' },
+      { value: 'Itch.io', label: 'and Game Jolt; chapter 1 is playable' },
     ],
     shelfCaption:
       'The shop shelf: fish sauce, chilli sauce, salt and a loaf of bread. Every item was modelled by the team in Blender and is rendered live in 3D.',
@@ -52,7 +65,51 @@ export const en: Dictionary = {
     ],
     signature: 'Dad',
     role: 'Police officer, retired',
-    stub: 'Follow to find out if he wakes in time.',
+    stub: 'Get the chapter 1 demo the day the team releases it.',
+  },
+  why: {
+    title: 'Why Blood Root exists',
+    intro:
+      'In our EXE101 course we surveyed students aged 18–25 who love puzzles and horror. They told us four things.',
+    caption: 'Survey record: what players run into, and how Blood Root answers',
+    problemHead: 'What players run into',
+    solutionHead: 'What Blood Root does instead',
+    rows: [
+      {
+        problem: 'Horror games lean on jump scares.',
+        solution: 'Fear comes from atmosphere, sound and what you work out yourself. No jump scares.',
+      },
+      {
+        problem: 'Few puzzle or detective games are set in Vietnam.',
+        solution:
+          'A corner grocery store, a family altar, a school at night, patterned tiles: places Vietnamese players know at a glance.',
+      },
+      {
+        problem: 'Escape rooms cost 150,000–300,000 VND for one hour; foreign games start at 150,000 VND.',
+        solution: 'A free demo; the full game is planned at 50,000 VND for 2–3 hours of play.',
+      },
+      {
+        problem: 'Study pressure is high, and downtime is mostly scrolling.',
+        solution: 'Every clue is a question: you have to look, remember and piece it together.',
+      },
+    ],
+    proofTitle: 'Tested with 20 players',
+    figures: [
+      {
+        value: 85,
+        suffix: '%',
+        caption: 'liked the mix of detective work and psychological horror, and the Vietnamese atmosphere',
+      },
+      { value: 75, suffix: '%', caption: 'found the story of the father’s coma gripping' },
+      { value: 20, suffix: '', caption: 'players aged 18–25, students who love puzzles' },
+    ],
+    changesTitle: 'What we changed after the playtest',
+    changes: [
+      'A hint arrives when you are stuck for more than 3 minutes.',
+      'A “Read clearly” mode for handwritten letters and old newspapers.',
+      'Shorter chores in the grocery store.',
+      'Important objects glow faintly to guide you.',
+    ],
   },
   wall: {
     title: 'The hallway wall',
@@ -104,51 +161,43 @@ export const en: Dictionary = {
       { name: 'It persuades', detail: 'your pain, until you give in' },
     ],
   },
-  chapter: {
-    title: 'Chapter 1: The teacher',
-    prev: 'Previous moment',
-    next: 'Next moment',
-    moments: [
+  features: {
+    title: 'What you do in Blood Root',
+    intro: 'Chapter 1, “The teacher”, is playable. These are the four things you do in it.',
+    count: (i: number, n: number) => `${i} of ${n}`,
+    items: [
       {
-        name: 'The first night',
-        text: 'After your first day at the counter, you fall asleep and wake in a school corridor.',
-        alt: 'A dark school corridor with a classroom door ajar',
+        name: 'Investigate through clues',
+        text: 'Collect newspaper articles, old letters and family photos. The ending depends on how much evidence you find.',
+        alt: 'A torn photo piece lying on the patterned tiles of a corridor',
       },
       {
-        name: 'The dirty hall',
-        text: 'Sweep the floor and gather torn pieces of a photograph from the patterned tiles.',
-        alt: 'A torn photo piece lying on patterned floor tiles',
+        name: 'Live in a Vietnamese home',
+        text: 'Mind the grocery store, light incense for your mother, then wake inside a school at night.',
+        alt: 'The living room in the game: blue walls, a floral tablecloth, the altar at the far end',
       },
       {
-        name: 'Lights out',
-        text: 'The fluorescent tubes die. From here on there is only your flashlight.',
-        alt: 'A flashlight beam sweeping down a dark staircase',
-      },
-      {
-        name: 'The torn photo',
-        text: 'Nine pieces become a classroom at night: your first clue.',
+        name: 'Rebuild the torn photograph',
+        text: 'Nine pieces, one clue. Stuck for three minutes and the game nudges you gently.',
         alt: 'The in-game torn photo puzzle',
       },
       {
-        name: 'The classroom',
-        text: 'The teacher is counting at her desk. You have one minute to find somewhere to hide.',
-        alt: 'A dark classroom with wooden desks',
-      },
-      {
-        name: 'Hold your breath',
-        text: 'Find a cupboard and stay inside until the footsteps pass.',
-        alt: 'A corridor with a countdown: the teacher is counting, find a cupboard to hide in',
+        name: 'Fear without jump scares',
+        text: 'Only a flashlight, the buzz of a dying fluorescent tube, and something counting in the dark.',
+        alt: 'A flashlight beam sweeping down a dark staircase',
       },
     ],
   },
   puzzle: {
-    title: 'Piece it back together',
+    title: 'Try it now',
     intro: 'This photograph is the first clue of chapter 1. Drag or tap two pieces to swap them.',
     keyboard: 'Keyboard: arrow keys to move, Enter to swap.',
     moves: (n: number) => `${n} ${n === 1 ? 'move' : 'moves'}`,
     piece: (n: number, row: number, col: number) => `Piece ${n}, row ${row} column ${col}`,
     selected: 'selected',
     reset: 'Shuffle again',
+    hint: 'Hint',
+    hintText: (row: number, col: number) => `The lit piece belongs in row ${row}, column ${col}.`,
     solved: 'The classroom, that night. Miss Mai never came home.',
     solvedIn: (n: number) => `You put it back together in ${n} ${n === 1 ? 'move' : 'moves'}.`,
     alt: 'A classroom at night washed in red: the completed photo from the minigame',
@@ -156,17 +205,10 @@ export const en: Dictionary = {
   making: {
     title: 'Built from real things',
     intro:
-      'A jar of fish sauce, a loaf of bread, the incense burner on the altar: we modelled each one in Blender so the house feels like a real Vietnamese home.',
+      'A jar of fish sauce, a loaf of bread, the incense burner on the altar: we modelled 30 objects in Blender so the house feels like a real Vietnamese home.',
     altarAlt:
       'A 3D family altar: a funeral portrait, altar lamp, incense burner and chrysanthemums on an altar cabinet',
     tiles: [
-      {
-        img: 'altar',
-        name: 'The altar',
-        where: 'The house',
-        tool: 'Unity',
-        note: 'Portrait, lamp, incense burner',
-      },
       {
         img: 'house',
         name: 'Living room',
@@ -195,13 +237,6 @@ export const en: Dictionary = {
         tool: 'Blender',
         note: 'Wooden desks, green board',
       },
-      {
-        img: 'corridorDay',
-        name: 'Corridor',
-        where: 'The school',
-        tool: 'Blender',
-        note: 'Like the FPT basement',
-      },
       { img: 'stairs', name: 'Stairwell', where: 'The school', tool: 'Blender', note: 'The way upstairs' },
       {
         img: 'corridorRed',
@@ -212,33 +247,67 @@ export const en: Dictionary = {
       },
     ],
   },
-  stats: {
-    titleA: 'A game',
-    titleB: 'made by hand',
-    figures: [
-      { value: '10–12', caption: 'years in each cycle of the blood root' },
-      { value: '9', caption: 'pieces of the torn photograph' },
-      { value: '30', caption: 'models the team built in Blender' },
-      { value: '3', caption: 'settings: the house, the school, the village' },
-      { value: '1', caption: 'chapter playable so far' },
-    ],
-  },
-  studio: {
+  team: {
     title: 'Hextrix Studio',
     letter:
-      'We are a team of FPT University students making Blood Root for the EXE201 course. We wanted a horror game Vietnamese players would recognise at a glance: the corner grocery store, the patterned floor tiles, the smell of incense on the family altar.',
+      'We are six FPT University students making Blood Root for the EXE201 course. We wanted a horror game Vietnamese players would recognise at a glance: the corner grocery store, the patterned floor tiles, the smell of incense on the family altar.',
+    photoAlt: (name: string) => `Photo of ${name}`,
     members: [
-      { name: 'Nguyễn Phúc Thịnh', role: 'Front-end design, game development' },
-      { name: 'Trần Hữu Thắng', role: 'Business analysis, project management' },
-      { name: 'Tạ Ngọc Thanh Thanh', role: 'Graphic design' },
-      { name: 'Nguyễn Đình Nhu', role: 'Graphic design' },
-      { name: 'Lê Nguyễn Quốc Hùng', role: 'Game development' },
-      { name: 'Trần Gia Phú', role: 'Game development' },
+      {
+        id: 'thang',
+        name: 'Trần Hữu Thắng',
+        role: 'Team lead, project management',
+        bio: 'Software engineering student. Front-end and back-end (ReactJS, NodeJS, MongoDB), mobile apps and deployment.',
+      },
+      {
+        id: 'thinh',
+        name: 'Nguyễn Phúc Thịnh',
+        role: 'Front-end design, game development',
+        bio: 'Software engineering student. ReactJS, NodeJS, MongoDB, React Native, C#, Java.',
+      },
+      {
+        id: 'thanh',
+        name: 'Tạ Ngọc Thanh Thanh',
+        role: '3D texturing, graphics and UI',
+        bio: '3D texturing, UI and promotional design; carries 2D concepts into the game’s 3D spaces.',
+      },
+      {
+        id: 'nhu',
+        name: 'Nguyễn Đình Nhu',
+        role: '3D modelling and animation',
+        bio: 'Models, topology and UVs that run smoothly in the engine; most of the character animation.',
+      },
+      {
+        id: 'hung',
+        name: 'Lê Nguyễn Quốc Hùng',
+        role: 'Game development',
+        bio: 'Software engineering student. ReactJS, C++, MySQL, C#, Unity.',
+      },
+      {
+        id: 'phu',
+        name: 'Trần Gia Phú',
+        role: 'Game development',
+        bio: 'Software engineering student. Java, ReactJS, MySQL, C#, Unity.',
+      },
     ],
   },
+  signup: {
+    title: 'Get the demo',
+    intro: 'Leave your email and we will send the chapter 1 demo when it lands on Itch.io.',
+    to: 'Send to',
+    email: 'Your email',
+    name: 'Name (optional)',
+    submit: 'Sign up for the demo',
+    sending: 'Sending…',
+    consent: 'Only used for news about Blood Root.',
+    invalid: 'That email doesn’t look right. Please check it.',
+    success: 'You’re on the list. Remember to lock the door before dark.',
+    error: 'That didn’t go through. Try again, or',
+    openForm: 'open the form here',
+    notReady: 'The sign-up form is being set up. Follow our page for now.',
+  },
   footer: {
-    signoff: 'Lock the door before dark',
-    message: 'Blood Root is in development. Follow our page for news of the playable demo.',
+    contact: 'Contact the team',
     links: { facebook: 'Facebook page', top: 'Back to top' },
     stampAlt: 'The funeral portrait on the in-game altar',
     imprint: '© 2026 Hextrix Studio · EXE201, FPT University',

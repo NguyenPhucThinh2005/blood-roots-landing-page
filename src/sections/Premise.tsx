@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { btsImages } from '../assets/media'
 import { Plate3D } from '../components/Plate3D'
 import { useReveal } from '../hooks/useReveal'
 import { useT } from '../i18n/LanguageProvider'
@@ -37,7 +38,12 @@ export function Premise() {
             {t.premise.shelfCaption}
           </figcaption>
           <div data-reveal className="md:col-span-7 md:col-start-6">
-            <Plate3D scene="shelf" label={t.premise.shelfAlt} className="aspect-[4/3] w-full" />
+            <Plate3D
+              scene="shelf"
+              label={t.premise.shelfAlt}
+              fallback={btsImages.house}
+              className="aspect-[4/3] w-full"
+            />
           </div>
         </figure>
       </div>

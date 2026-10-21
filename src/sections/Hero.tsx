@@ -7,19 +7,20 @@ import { cn } from '../lib/cn'
 import { gsap, useGSAP } from '../lib/gsap'
 
 type Folder = {
-  id: 'making' | 'chapter' | 'entity' | 'wall' | 'premise'
+  id: 'team' | 'puzzle' | 'features' | 'why' | 'premise'
   band: string
   ink: string
   tabX: string
 }
 
-// Back to front. Each folder takes the ground colour of the section it opens (docs/art-direction.md).
+// Back to front. The five folders are the five things the page must show (product, problem and
+// answer, features, a try-out, the team); each takes the ground colour of the section it opens.
 const FOLDERS: Folder[] = [
-  { id: 'making', band: 'bg-[#3b2f2c]', ink: 'text-bone', tabX: 'left-[62%] md:left-[70%]' },
-  { id: 'chapter', band: 'bg-soot', ink: 'text-bone', tabX: 'left-[34%] md:left-[50%]' },
-  { id: 'entity', band: 'bg-blood-900', ink: 'text-bone', tabX: 'left-[6%] md:left-[30%]' },
-  { id: 'wall', band: 'bg-bone-dim', ink: 'text-void', tabX: 'left-[48%] md:left-[11%]' },
-  { id: 'premise', band: 'bg-bone', ink: 'text-void', tabX: 'left-[8%] md:left-[3%]' },
+  { id: 'team', band: 'bg-ash', ink: 'text-bone', tabX: 'left-[62%] md:left-[72%]' },
+  { id: 'puzzle', band: 'bg-[#3b2f2c]', ink: 'text-bone', tabX: 'left-[30%] md:left-[52%]' },
+  { id: 'features', band: 'bg-soot', ink: 'text-bone', tabX: 'left-[6%] md:left-[31%]' },
+  { id: 'why', band: 'bg-bone-dim', ink: 'text-void', tabX: 'left-[34%] md:left-[11%]' },
+  { id: 'premise', band: 'bg-bone', ink: 'text-void', tabX: 'left-[6%] md:left-[3%]' },
 ]
 
 export function Hero() {
